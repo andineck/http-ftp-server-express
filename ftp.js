@@ -4,10 +4,10 @@ const { networkInterfaces } = require('os');
 
 const nets = networkInterfaces();
 
-const user = "user";
-const pw = "pw";
+const user = process.env.USER || "user";
+const pw = process.env.PW || "pw";
 
-const host = process.argv[2] || "localhost";
+const host = process.argv[2] || "0.0.0.0";
 const port = process.argv[3] || 21;
 
 const getNetworks = () => {

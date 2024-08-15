@@ -6,19 +6,23 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"node http.js\" \"node ftp.js\"",
-    "upgrade-all": "npx npm-check-updates && npm i && npm prune"
+    "start:http": "node http.js",
+    "start:ftp": "USER=admin PW=***** node ftp.js 0.0.0.0 7200",
+    "upgrade-all": "npx npm-check-updates && npm i && npm prune",
+    "pm2:http": "pm2 start npm --name file-server-http -- run start:http",
+    "pm2:ftp": "pm2 start npm --name file-server-ftp -- run start:ftp"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^7.2.1",
-    "express": "^4.18.1",
+    "concurrently": "^8.2.2",
+    "express": "^4.19.2",
     "express-xml-bodyparser": "^0.3.0",
-    "ftp-srv": "^4.6.1",
+    "ftp-srv": "^4.6.3",
     "morgan": "^1.10.0",
     "multer": "^1.4.4",
     "netmask": "^2.0.2",
-    "npm-check-updates": "^16.3.16"
+    "npm-check-updates": "^17.0.6"
   }
 }
