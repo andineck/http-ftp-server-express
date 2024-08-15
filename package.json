@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"node http.js\" \"node ftp.js\"",
-    "start:http": "node http.js",
+    "start:http": "node http.js 0.0.0.0 9200",
     "start:ftp": "USER=admin PW=***** node ftp.js 0.0.0.0 7200",
     "upgrade-all": "npx npm-check-updates && npm i && npm prune",
     "pm2:http": "pm2 start npm --name file-server-http -- run start:http",
